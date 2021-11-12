@@ -15,7 +15,7 @@ if ($conn->connect_error) {
   } 
 
 $stmt = $conn->prepare("SELECT * from cities where Country=?");
-$myCountry = 1;
+$myCountry = $_GET["Country"];
 $stmt->bind_param("i",$myCountry);
 
 $stmt->execute();

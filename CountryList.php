@@ -6,13 +6,12 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Document</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
+    <script src="loadCities.js"></script>
 </head>
 
 <body>
-    <select>
         <?php
-
-        if (isset($_GET["Country"])) {
 
             $servername = "localhost";
             $username = "root";
@@ -30,17 +29,16 @@
 
             $stmt->execute();
             $res = $stmt->get_result();
-            print("<select>");
+            print("<select id='Country'>");
             while ($row = $res->fetch_assoc()) {
         ?>
-                <option value="<?= $row["CountryID"]  ?>"><?= $row["CountryName"] . "<br>"; ?> </option>
+                <option value="<?= $row["CountryID"]  ?>"><?= $row["CountryName"]; ?> </option>
         <?php
             }
             print("</select>");
             $stmt->close();
-        }
         ?>
-    </select>
+        <div id="cities"></div>
 </body>
 
 </html>
